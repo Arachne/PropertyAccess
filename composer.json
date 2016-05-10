@@ -1,0 +1,33 @@
+{
+    "name": "arachne/container-adapter",
+    "description": "Wrapper for Nette DIC which implements ContainerInterface from Symfony.",
+    "type": "library",
+    "keywords": [ "nette", "arachne", "symfony", "dependency injection" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jáchym Toušek",
+            "homepage": "http://enumag.cz",
+            "email": "enumag@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "nette/di": "^2.3.0",
+        "symfony/dependency-injection": "^3.0.0"
+    },
+    "require-dev": {
+        "arachne/bootstrap": "~0.2.1",
+        "codeception/codeception": "~2.2.0@rc"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arachne\\ContainerAdapter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Integration\\": "tests/integration/src"
+        }
+    }
+}
