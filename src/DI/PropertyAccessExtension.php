@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Arachne
+ *
+ * Copyright (c) Jáchym Toušek (enumag@gmail.com)
+ *
+ * For the full copyright and license information, please view the file license.md that was distributed with this source code.
+ */
+
 namespace Arachne\PropertyAccess\DI;
 
 use Nette\DI\CompilerExtension;
@@ -9,8 +17,9 @@ use Nette\DI\CompilerExtension;
  */
 class PropertyAccessExtension extends CompilerExtension
 {
-
-    /** @var array */
+    /**
+     * @var array
+     */
     public $defaults = [
         'magicCall' => false,
         'throwExceptionOnInvalidIndex' => false,
@@ -22,20 +31,10 @@ class PropertyAccessExtension extends CompilerExtension
 
         $builder = $this->getContainerBuilder();
 
-        $definition = $builder->addDefinition($this->prefix('propertyAccessorBuilder'));
-        $definition->setClass('Symfony\Component\PropertyAccess\PropertyAccessorBuilder');
-
-        if ($this->config['magicCall']) {
-            $definition->addSetup('enableMagicCall');
-        } else {
-            $definition->addSetup('disableMagicCall');
-        }
-
-        if ($this->config['throwExceptionOnInvalidIndex']) {
-            $definition->addSetup('enableExceptionOnInvalidIndex');
-        } else {
-            $definition->addSetup('disableExceptionOnInvalidIndex');
-        }
+        $builder->addDefinition($this->prefix('propertyAccessorBuilder'))
+            ->setClass('Symfony\Component\PropertyAccess\PropertyAccessorBuilder')
+            ->addSetup($this->config['magicCall'] ? 'enableMagicCall' : 'disableMagicCall')
+            ->addSetup($this->config['throwExceptionOnInvalidIndex'] ? 'enableExceptionOnInvalidIndex' : 'disableExceptionOnInvalidIndex');
 
         $builder->addDefinition($this->prefix('propertyAccessor'))
             ->setClass('Symfony\Component\PropertyAccess\PropertyAccessorInterface')
