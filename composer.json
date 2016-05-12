@@ -1,8 +1,8 @@
 {
-    "name": "arachne/container-adapter",
-    "description": "Wrapper for Nette DIC which implements ContainerInterface from Symfony.",
+    "name": "arachne/property-access",
+    "description": "Integration of symfony/property-access to nette/di.",
     "type": "library",
-    "keywords": [ "nette", "arachne", "symfony", "dependency injection" ],
+    "keywords": [ "nette", "arachne", "symfony" ],
     "license": "MIT",
     "authors": [
         {
@@ -12,9 +12,9 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.4.0",
         "nette/di": "^2.3.0",
-        "symfony/dependency-injection": "^3.0.0"
+        "symfony/property-access": "^2.8.0|^3.0.0"
     },
     "require-dev": {
         "arachne/bootstrap": "~0.2.1",
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Arachne\\ContainerAdapter\\": "src"
+            "Arachne\\PropertyAccess\\": "src"
         }
     },
     "autoload-dev": {
