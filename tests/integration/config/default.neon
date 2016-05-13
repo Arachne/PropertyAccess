@@ -1,0 +1,2 @@
+extensions:
+    arachne.propertyaccess: Arachne\PropertyAccess\DI\PropertyAccessExtension
