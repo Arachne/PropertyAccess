@@ -2,5 +2,5 @@ extensions:
     arachne.propertyaccess: Arachne\PropertyAccess\DI\PropertyAccessExtension
 
 arachne.propertyaccess:
-	magicCall: true
-	throwExceptionOnInvalidIndex: true
+    magicCall: true
+    throwExceptionOnInvalidIndex: true
