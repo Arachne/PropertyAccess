@@ -2,7 +2,6 @@
 
 namespace Tests\Integration;
 
-use Arachne\Bootstrap\Configurator;
 use Codeception\Test\Unit;
 use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -14,14 +13,14 @@ class PropertyAccessorExtensionTest extends Unit
 {
     public function testDefaultConfiguration()
     {
-        $container = $this->createContainer('default.neon');
+        $this->tester->useConfigFiles(['config/default.neon']);
 
-        $builder = $container->getByType(PropertyAccessorBuilder::class);
+        $builder = $this->tester->grabService(PropertyAccessorBuilder::class);
         $this->assertInstanceOf(PropertyAccessorBuilder::class, $builder);
         $this->assertFalse($builder->isMagicCallEnabled());
         $this->assertFalse($builder->isExceptionOnInvalidIndexEnabled());
 
-        $accessor = $container->getByType(PropertyAccessorInterface::class);
+        $accessor = $this->tester->grabService(PropertyAccessorInterface::class);
         $this->assertInstanceOf(PropertyAccessorInterface::class, $accessor);
         $this->assertAttributeSame(false, 'magicCall', $accessor);
         $this->assertAttributeSame(true, 'ignoreInvalidIndices', $accessor);
@@ -29,25 +28,16 @@ class PropertyAccessorExtensionTest extends Unit
 
     public function testCustomConfiguration()
     {
-        $container = $this->createContainer('custom.neon');
+        $this->tester->useConfigFiles(['config/custom.neon']);
 
-        $builder = $container->getByType(PropertyAccessorBuilder::class);
+        $builder = $this->tester->grabService(PropertyAccessorBuilder::class);
         $this->assertInstanceOf(PropertyAccessorBuilder::class, $builder);
         $this->assertTrue($builder->isMagicCallEnabled());
         $this->assertTrue($builder->isExceptionOnInvalidIndexEnabled());
 
-        $accessor = $container->getByType(PropertyAccessorInterface::class);
+        $accessor = $this->tester->grabService(PropertyAccessorInterface::class);
         $this->assertInstanceOf(PropertyAccessorInterface::class, $accessor);
         $this->assertAttributeSame(true, 'magicCall', $accessor);
         $this->assertAttributeSame(false, 'ignoreInvalidIndices', $accessor);
-    }
-
-    private function createContainer($file)
-    {
-        $config = new Configurator();
-        $config->setTempDirectory(TEMP_DIR);
-        $config->addConfig(__DIR__.'/../config/'.$file);
-
-        return $config->createContainer();
     }
 }
