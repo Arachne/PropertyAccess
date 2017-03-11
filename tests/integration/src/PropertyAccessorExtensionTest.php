@@ -2,6 +2,7 @@
 
 namespace Tests\Integration;
 
+use Arachne\Codeception\Module\NetteDIModule;
 use Codeception\Test\Unit;
 use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -11,6 +12,11 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
  */
 class PropertyAccessorExtensionTest extends Unit
 {
+    /**
+     * @var NetteDIModule
+     */
+    protected $tester;
+
     public function testDefaultConfiguration()
     {
         $this->tester->useConfigFiles(['config/default.neon']);
