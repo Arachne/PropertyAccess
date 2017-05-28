@@ -17,5 +17,5 @@ Installation
 The best way to install Arachne/PropertyAccess is using [Composer](http://getcomposer.org/).
 
 ```sh
-$ composer require arachne/property-access
+composer require arachne/property-access
 ```
