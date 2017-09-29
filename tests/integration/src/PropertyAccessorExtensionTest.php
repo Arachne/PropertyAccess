@@ -17,7 +17,7 @@ class PropertyAccessorExtensionTest extends Unit
      */
     protected $tester;
 
-    public function testDefaultConfiguration()
+    public function testDefaultConfiguration(): void
     {
         $this->tester->useConfigFiles(['config/default.neon']);
 
@@ -32,7 +32,7 @@ class PropertyAccessorExtensionTest extends Unit
         $this->assertAttributeSame(true, 'ignoreInvalidIndices', $accessor);
     }
 
-    public function testCustomConfiguration()
+    public function testCustomConfiguration(): void
     {
         $this->tester->useConfigFiles(['config/custom.neon']);
 

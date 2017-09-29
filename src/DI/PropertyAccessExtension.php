@@ -19,7 +19,7 @@ class PropertyAccessExtension extends CompilerExtension
         'throwExceptionOnInvalidIndex' => false,
     ];
 
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $this->validateConfig($this->defaults);
 
