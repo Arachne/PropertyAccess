@@ -7,3 +7,4 @@ modules:
         - Arachne\Codeception\Module\NetteDIModule:
             tempDir: ../_temp/integration
             removeDefaultExtensions: true
+            newContainerForEachTest: true
