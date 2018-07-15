@@ -29,8 +29,8 @@ class PropertyAccessExtension extends CompilerExtension
 
         $builder->addDefinition($this->prefix('propertyAccessorBuilder'))
             ->setType(PropertyAccessorBuilder::class)
-            ->addSetup($this->config['magicCall'] ? 'enableMagicCall' : 'disableMagicCall')
-            ->addSetup($this->config['throwExceptionOnInvalidIndex'] ? 'enableExceptionOnInvalidIndex' : 'disableExceptionOnInvalidIndex');
+            ->addSetup((bool) $this->config['magicCall'] ? 'enableMagicCall' : 'disableMagicCall')
+            ->addSetup((bool) $this->config['throwExceptionOnInvalidIndex'] ? 'enableExceptionOnInvalidIndex' : 'disableExceptionOnInvalidIndex');
 
         $builder->addDefinition($this->prefix('propertyAccessor'))
             ->setType(PropertyAccessorInterface::class)
